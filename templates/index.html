@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who Is This? - Start</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Visual Identity Recognition Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a90e2;
-            --secondary: #50e3c2;
-            --background: #f5f7fa;
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --background: #f8f9fa;
             --text: #2c3e50;
+            --border: #e0e0e0;
         }
 
         * {
@@ -19,86 +21,278 @@
             padding: 0;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(52,152,219,0.03) 0%, 
+                rgba(242,247,251,0.1) 50%, 
+                rgba(52,152,219,0.03) 100%);
+            animation: gradientFlow 20s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Updated container animation */
+        .container {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            animation: containerEntrance 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes containerEntrance {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enhanced interactive elements */
+        .name-item {
+            transition: all 0.2s ease;
+        }
+
+        .name-item:hover {
             background: var(--background);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            transform: translateX(4px);
+        }
+
+        button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44,62,80,0.15);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.15),
+                transparent
+            );
+            transition: 0.6s;
+        }
+
+        button:hover::after {
+            left: 100%;
+        }
+
+        /* Added subtle loading animation */
+        @keyframes subtlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
+            animation: subtlePulse 6s ease-in-out infinite;
         }
 
         h1 {
             color: var(--primary);
             margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .description {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 2rem 0;
         }
 
         input {
             width: 100%;
-            padding: 12px 20px;
-            margin: 1rem 0;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s ease;
+            background: var(--background);
+            color: var(--text);
         }
 
         input:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(52,152,219,0.1);
+        }
+
+        .name-list {
+            position: absolute;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: none;
+            z-index: 1;
+        }
+
+        .name-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-align: left;
+        }
+
+        .name-item:hover {
+            background: var(--background);
         }
 
         button {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 10px;
+            padding: 14px 32px;
+            border-radius: 8px;
             font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            width: 100%;
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74,144,226,0.3);
+            background: var(--secondary);
+            box-shadow: 0 2px 8px rgba(44,62,80,0.1);
+        }
+
+        .legal-text {
+            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Who Is This? 🕵️♂️</h1>
-        <input type="text" id="username" placeholder="Enter your name">
-        <button onclick="startGame()">Start Game</button>
+        <h1>Visual Recognition Challenge</h1>
+        <p class="description">
+            Test your recognition skills by identifying individuals in series of images. 
+            Select your name from the registered participant list to begin.
+        </p>
+        
+        <div class="search-container">
+            <input type="text" 
+                   id="nameSearch" 
+                   placeholder="Search participant name..."
+                   aria-label="Participant search"
+                   autocomplete="off">
+            <div class="name-list" id="nameList"></div>
+        </div>
+        
+        <button onclick="startChallenge()">Begin Challenge</button>
+        <p class="legal-text">By participating, you agree to our privacy policy and terms of use</p>
     </div>
 
     <script>
-        async function startGame() {
-            const username = document.getElementById('username').value;
-            if (!username) return alert('Please enter your name!');
+        const participants = names = [
+    "Bejke Adorján",
+    "Ádám Békefi",
+    "Devecser Belányi",
+    "Aron Bense",
+    "Mirkó Czibulyás",
+    "Attila Czikó",
+    "Botond Dedák",
+    "Natasa Fehér",
+    "Fruzsina Greta Fekete",
+    "Nikoletta Horváth",
+    "Zselyke Ajsa Kalapács",
+    "Milán Laczkovich",
+    "Levii Lóczi",
+    "Milán Lóczi",
+    "Dániel Magyar",
+    "Richárd Molnár",
+    "Anna Papp",
+    "Dóra Projcs",
+    "Tóth Benedek",
+    "Zsombor Noel Tóth",
+    "Maxim Vadas",
+    "Dorka Vona"
+];
+
+
+        const nameSearch = document.getElementById('nameSearch');
+        const nameList = document.getElementById('nameList');
+
+        nameSearch.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredNames = participants.filter(name => 
+                name.toLowerCase().includes(searchTerm)
+            );
             
-            const response = await fetch('/start', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `username=${encodeURIComponent(username)}`
-            });
+            nameList.innerHTML = filteredNames.map(name => 
+                `<div class="name-item" onclick="selectName('${name}')">${name}</div>`
+            ).join('');
             
-            if (response.ok) {
-                window.location.href = '/game';
+            nameList.style.display = filteredNames.length ? 'block' : 'none';
+        });
+
+        function selectName(name) {
+            nameSearch.value = name;
+            nameList.style.display = 'none';
+        }
+
+        async function startChallenge() {
+            const selectedName = nameSearch.value.trim();
+            
+            if (!participants.includes(selectedName)) {
+                alert('Please select your name from the participant list');
+                return;
+            }
+
+            try {
+                const response = await fetch('/start', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `username=${encodeURIComponent(selectedName)}`
+                });
+                
+                if (response.ok) {
+                    window.location.href = '/game';
+                }
+            } catch (error) {
+                console.error('Challenge initiation failed:', error);
+                alert('System unavailable - please try again later');
             }
         }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                nameList.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
