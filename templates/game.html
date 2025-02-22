@@ -368,7 +368,7 @@ load(); // Run it immediately
                 
                 document.getElementById('current-image').src = `/images/${data.image}`;
                 document.getElementById('progress-bar').style.width = 
-                    `${(data.question_number/{{ qnum }})*100}%`;
+                    `${(data.question_number/ {{ qnum }} )*100}%`;
             } catch (error) {
                 showMessage('Error loading question', 'error');
             }
