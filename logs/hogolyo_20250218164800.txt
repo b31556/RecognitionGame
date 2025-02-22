@@ -1,0 +1,13 @@
+Player: hogolyo
+Total score: 2/10
+Details:
+Question 1: Image: soul_lantern.json, Correct: soul_lantern, Your answer: d, Time: 22.52s, Correct: No
+Question 2: Image: png-clipart-python-clojure-javascript-logo-miscellaneous-angle-thumbnail.png, Correct: png-clipart-python-clojure-javascript-logo-miscellaneous-angle-thumbnail, Your answer: logo, Time: 12.53s, Correct: No
+Question 3: Image: ilovehi--r.png, Correct: ilovehi--r, Your answer: a, Time: 6.8s, Correct: No
+Question 4: Image: 2023. szeptember 20. óta.-niki-anyja-facebook-csoport-join, Correct: 2023. szeptember 20. óta, Your answer: a, Time: 3.32s, Correct: No
+Question 5: Image: blud_is_thinking.jpg, Correct: blud_is_thinking, Your answer: blud_is_thinking, Time: 16.31s, Correct: Yes
+Question 6: Image: 20240103_222220 másolata.png, Correct: 20240103_222220 másolata, Your answer: s, Time: 7.96s, Correct: No
+Question 7: Image: Csillagászat v 1.pptx, Correct: Csillagászat v 1, Your answer: s, Time: 3.14s, Correct: No
+Question 8: Image: Artec.jpg, Correct: Artec, Your answer: Artec, Time: 8.25s, Correct: Yes
+Question 9: Image: 20250129_203644[1].jpg, Correct: 20250129_203644[1], Your answer: s, Time: 4.09s, Correct: No
+Question 10: Image: 436300808_6782273761876211_7587718880325377103_n.jpg, Correct: 436300808_6782273761876211_7587718880325377103_n, Your answer: a, Time: 4.66s, Correct: No

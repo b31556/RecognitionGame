@@ -1,0 +1,13 @@
+Player: hogolyo
+Total score: 3/10
+Details:
+Question 1: Image: viber_kép_2024-03-26_15-58-58-053.jpg, Correct: viber_kép_2024-03-26_15-58-58-053, Your answer: gg, Time: 48.74s, Correct: No
+Question 2: Image: viber_kép_2024-03-26_15-38-37-673.jpg, Correct: viber_kép_2024-03-26_15-38-37-673, Your answer: g, Time: 14.5s, Correct: No
+Question 3: Image: kicsi.png, Correct: kicsi, Your answer: kicsi, Time: 9.0s, Correct: Yes
+Question 4: Image: rpg.png, Correct: rpg, Your answer: me, Time: 6.9s, Correct: No
+Question 5: Image: viber_kép_2024-03-26_16-15-20-235.jpg, Correct: viber_kép_2024-03-26_16-15-20-235, Your answer: me, Time: 10.15s, Correct: No
+Question 6: Image: mmk.jpg, Correct: mmk, Your answer: mirko, Time: 148.86s, Correct: No
+Question 7: Image: viber_kép_2024-01-24_08-16-43-623.jpg, Correct: viber_kép_2024-01-24_08-16-43-623, Your answer: v, Time: 6.39s, Correct: No
+Question 8: Image: osztLanyPózol.jpg, Correct: osztLanyPózol, Your answer: osztlanypózol, Time: 11.92s, Correct: Yes
+Question 9: Image: facebokk.book.txt, Correct: facebokk.book, Your answer: n, Time: 3.34s, Correct: No
+Question 10: Image: lookup.jpg, Correct: lookup, Your answer: lookup, Time: 13.79s, Correct: Yes

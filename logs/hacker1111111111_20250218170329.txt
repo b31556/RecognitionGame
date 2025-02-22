@@ -1,0 +1,13 @@
+Player: hacker1111111111
+Total score: 3/10
+Details:
+Question 1: Image: 20240103_222220 másolata.png, Correct: 20240103_222220 másolata, Your answer: 3ddd, Time: 6.09s, Correct: No
+Question 2: Image: logo.png, Correct: logo, Your answer: logo, Time: 7.04s, Correct: Yes
+Question 3: Image: facebokk.book.txt, Correct: facebokk.book, Your answer: f, Time: 5.16s, Correct: No
+Question 4: Image: Névtelen.png, Correct: Névtelen, Your answer: f, Time: 2.61s, Correct: No
+Question 5: Image: ithinkfisr5c.jpg, Correct: ithinkfisr5c, Your answer: vvvvvvvvvvvvvv, Time: 16.87s, Correct: No
+Question 6: Image: viber_kép_2024-01-03_21-55-56-937.jpg, Correct: viber_kép_2024-01-03_21-55-56-937, Your answer: vvvvvvvvvvvvvvvvvvvv, Time: 4.55s, Correct: No
+Question 7: Image: Bepillogo.png, Correct: Bepillogo, Your answer: bepillogo, Time: 13.31s, Correct: Yes
+Question 8: Image: 5secsok2024kari.png, Correct: 5secsok2024kari, Your answer: mr, Time: 30.92s, Correct: No
+Question 9: Image: IMG-37e0b2b117c01df1263f1986649408fa-V.jpg, Correct: IMG-37e0b2b117c01df1263f1986649408fa-V, Your answer: i,m, Time: 9.41s, Correct: No
+Question 10: Image: khmm.jpg, Correct: khmm, Your answer: khmm, Time: 9.53s, Correct: Yes
