@@ -161,7 +161,9 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Ez a projekt a módosított GNU General Public License (GPL) v3 licenc alatt áll. A licenc teljes szövege megtalálható a LICENSE fájlban.
+
+Fontos: Ha módosítod a programot, köteles vagy a módosított változatot nyilvánosan hozzáférhetővé tenni, a módosított GPL licenc 5(e) szakaszában foglaltak szerint.
 
 ---
 
