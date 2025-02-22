@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results - Who Is This?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Recognition Challenge Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a90e2;
-            --secondary: #50e3c2;
-            --background: #f5f7fa;
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --background: black;
             --text: #2c3e50;
+            --border: #dee2e6;
+            --success: #50e3c2;
+            --error: #E45A84;
         }
 
         * {
@@ -20,111 +24,227 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--background);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: var(--text);
+            background: black;
+            padding: 2%;
+          
         }
+        @media (max-width: 480px) {
+  body {
+    padding: 2%;
+  }
+}
 
         .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: auto;
-            max-width: 500px;
-            text-align: center;
+            background: linear-gradient(rgb(121, 130, 255),rgb(0,0,0));
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+            width: 100%;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
         }
 
         h1 {
             color: var(--primary);
             margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 2rem;
+            text-align: center;
         }
 
-        input {
+        .score-display {
+            font-size: 3.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            display: inline-block;
             width: 100%;
-            padding: 12px 20px;
-            margin: 1rem 0;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
         }
 
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
+        .results-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .results-table th {
+            background: var(--background);
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .results-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .results-table tr:hover td {
+            background: #f8f9fa;
+        }
+
+        .correct { color: var(--success); }
+        .incorrect { color: var(--error); }
+
+        .result-icon {
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         button {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
             font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            display: block;
+            width: fit-content;
+            margin: 2rem auto 0;
         }
 
         button:hover {
+            background: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74,144,226,0.3);
+            box-shadow: 0 4px 12px rgba(44,62,80,0.1);
         }
-        
+
+        @media (max-width: 800px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .results-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .score-display {
+                font-size: 2.5rem;
+            }
+        }
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+            --text: #2c3e50;
+            --border: #dee2e6;
+            --success: #50e3c2;
+            --error: #E45A84;
+        }
+
+        .container {
+            /* Add overflow hidden */
+            overflow: hidden;
+            /* Rest of container styles */
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
         .results-table {
             width: 100%;
-            margin: 2rem 0;
+            min-width: 600px; /* Minimum table width */
             border-collapse: collapse;
+            margin: 0;
         }
-        
-        .results-table td, .results-table th {
-            padding: 1rem;
+
+        .results-table th,
+        .results-table td {
+            padding: 1rem 1.5rem;
             text-align: left;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
         }
-        
-        .correct { color: #27ae60; }
-        .incorrect { color: #e74c3c; }
-        
-        .score-display {
-            font-size: 3rem;
-            color: var(--primary);
-            margin: 2rem 0;
+
+        .results-table td:not(:first-child),
+        .results-table th:not(:first-child) {
+            min-width: 120px;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 800px) {
+   
+            
+            .results-table th,
+            .results-table td {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .score-display {
+                font-size: 2.5rem;
+            }
+            
+            button {
+                width: 100%;
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Game Results �</h1>
-        <div class="score-display">{{ score }}/10</div>
+        <h1>Challenge Results</h1>
+        <div class="score-display">{{ score }}/{{ qnum }}</div>
         
-        <table class="results-table">
-            <tr>
-                <th>Question</th>
-                <th>Your Answer</th>
-                <th>Correct Answer</th>
-                <th>Time</th>
-                <th>Result</th>
-            </tr>
-            {% for entry in log_data %}
-            <tr>
-                <td>#{{ entry.question }}</td>
-                <td>{{ entry.user_answer }}</td>
-                <td>{{ entry.correct_answer }}</td>
-                <td>{{ entry.time_taken }}s</td>
-                <td>
-                    {% if entry.correct %}
-                        <span class="correct">✓</span>
-                    {% else %}
-                        <span class="incorrect">✗</span>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="table-wrapper">  <!-- Added wrapper div -->
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Your Answer</th>
+                        <th>Correct</th>
+                        <th>Time</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in log_data %}
+                    <tr>
+                        <td>#{{ entry.question }}</td>
+                        <td>{{ entry.user_answer }}</td>
+                        <td>{{ entry.correct_answer }}</td>
+                        <td>{{ entry.time_taken }}s</td>
+                        <td>
+                            {% if entry.correct %}
+                                <span class="correct result-icon">✓ Correct</span>
+                            {% else %}
+                                <span class="incorrect result-icon">✗ Incorrect</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         
         <button onclick="window.location.href='/'">Play Again</button>
     </div>

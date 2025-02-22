@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game - Who Is This?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Visual Recognition Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-       :root {
-            --primary: #4a90e2;
-            --secondary: #50e3c2;
-            --background: #f5f7fa;
-            --text: #2c3e50;
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+            --text: #ffffff;
+            --border: #dee2e6;
+            --success: #21d36b;
+            --error: #b30d3f;
         }
 
         * {
@@ -20,143 +24,450 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--background);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .container {
-            background: white;
+            color: var(--text);
+            background: black;
             padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
         }
 
-        h1 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        @media (max-width: 480px) {
+            body {
+                padding: 2%;
+            }
         }
 
-        input {
+        .game-container {
+            background: linear-gradient(rgb(121, 130, 255), rgb(0,0,0));
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
             width: 100%;
-            padding: 12px 20px;
-            margin: 1rem 0;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 2rem;
+            min-height: 600px;
+            position: relative;
+            border: 1px solid var(--border);
         }
 
-        input:focus {
+        .image-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        #current-image {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 5px;
+            aspect-ratio: 1/1;
+        }
+
+        .controls-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2%;
+        }
+
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-label {
+            font-size: 0.875rem;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: rgb(54, 0, 105);
+            transition: width 0.8s ease;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        #nameSearch {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #nameSearch:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+        }
+
+        .name-list {
+            position: absolute;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgb(63, 63, 63);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: none;
+            z-index: 1;
+        }
+
+        .name-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .name-item:hover {
+            transform: translateX(4px);
         }
 
         button {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 10px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            width: 100%;
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74,144,226,0.3);
-        }
-        
-        .game-container {
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        #image-container {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        #current-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .progress {
-            height: 10px;
-            background: #eee;
-            border-radius: 5px;
-            overflow: hidden;
-            margin: 1rem 0;
-        }
-
-        .progress-bar {
-            height: 100%;
             background: var(--secondary);
-            transition: width 0.3s;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44,62,80,0.1);
         }
+
+        @media (max-width: 768px) {
+            .game-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                min-height: auto;
+            }
+            
+            .image-section {
+                padding: 1rem;
+            }
+            
+            #current-image {
+                max-height: 50vh;
+            }
+        }
+
+        .status-message {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            transform: translateY(-20px);
+            opacity: 0;
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        /* Feedback overlay styles */
+        .feedback-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .feedback-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 4;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            animation: scale 0.3s ease-in-out;
+        }
+
+        .cross {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: scale 0.3s ease-in-out;
+        }
+
+        .cross-line {
+            position: absolute;
+            background: #fff;
+        }
+
+        .cross-line:first-child {
+            width: 100%;
+            height: 4px;
+            top: 48%;
+            left: 0;
+            transform: rotate(45deg);
+        }
+
+        .cross-line:last-child {
+            width: 100%;
+            height: 4px;
+            top: 48%;
+            left: 0;
+            transform: rotate(-45deg);
+        }
+
+        @keyframes scale {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-bg {
+            background: rgba(80, 227, 194, 0.1);
+        }
+
+        .error-bg {
+            background: rgba(228, 90, 132, 0.1);
+        }
+
+        .clue-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .success { background: var(--success); }
+        .error { background: var(--error); }
     </style>
 </head>
 <body>
-    <div class="container game-container">
-        <h1>Who Is In This Picture? 🎮</h1>
-        <div class="progress">
-            <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+    <div class="game-container">
+        <div class="image-section">
+            <div class="progress-container">
+                <div class="progress-label">Progress</div>
+                <div class="progress">
+                    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+            <img id="current-image" alt="Recognition challenge image" loading="eager">
         </div>
-        <div id="image-container">
-            <img id="current-image" alt="Guess who">
-            <input type="text" id="answer" placeholder="Enter name">
-            <button onclick="submitAnswer()">Submit</button>
+        
+        <div class="controls-section">
+            <h1>Identify the Individual</h1>
+            <div class="search-container">
+                <input type="text" 
+                       id="nameSearch" 
+                       placeholder="Search participant..."
+                       aria-label="Participant search"
+                       autocomplete="off">
+                <div class="name-list" id="nameList"></div>
+            </div>
+            <button onclick="submitAnswer()">Submit Answer</button>
         </div>
     </div>
 
     <script>
+        let participants = [];
+
+async function load() {
+    const res = await fetch('/get/names');
+    participants = await res.json();
+    
+}
+
+load(); // Run it immediately
+
+        const nameSearch = document.getElementById('nameSearch');
+        const nameList = document.getElementById('nameList');
+
+        nameSearch.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredNames = participants.filter(name => 
+                name.toLowerCase().includes(searchTerm)
+            );
+            
+            nameList.innerHTML = filteredNames.map(name => 
+                `<div class="name-item" onclick="selectName('${name}')">${name}</div>`
+            ).join('');
+            
+            nameList.style.display = filteredNames.length ? 'block' : 'none';
+        });
+
+        function selectName(name) {
+            nameSearch.value = name;
+            nameList.style.display = 'none';
+        }
+
         let currentQuestion = 0;
-        
+        let isLoading = false;
+
         async function loadQuestion() {
-            const response = await fetch('/get_question');
-            const data = await response.json();
-            
-            if (data.status === 'finished') {
-                window.location.href = '/results';
-                return;
+            try {
+                const response = await fetch('/get_question');
+                const data = await response.json();
+                
+                if (data.status === 'finished') {
+                    window.location.href = '/results';
+                    return;
+                }
+                
+                document.getElementById('current-image').src = `/images/${data.image}`;
+                document.getElementById('progress-bar').style.width = 
+                    `${(data.question_number/{{ qnum }})*100}%`;
+            } catch (error) {
+                showMessage('Error loading question', 'error');
             }
-            
-            document.getElementById('current-image').src = `/images/${data.image}`;
-            document.getElementById('progress-bar').style.width = `${(data.question_number/10)*100}%`;
         }
 
         async function submitAnswer() {
-            const answer = document.getElementById('answer').value;
-            if (!answer) return alert('Please enter your answer!');
+            if (isLoading) return;
             
-            const response = await fetch('/answer', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ answer })
-            });
-            
-            if (response.ok) {
-                document.getElementById('answer').value = '';
-                loadQuestion();
+            const selectedName = nameSearch.value.trim();
+            if (!participants.includes(selectedName)) {
+                showMessage('Please select a valid name', 'error');
+                return;
+            }
+
+            try {
+                isLoading = true;
+                document.querySelector('button').textContent = 'Submitting...';
+                
+                const response = await fetch('/answer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ answer: selectedName })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    
+                    if (result.status === 'finished') {
+                        window.location.href = '/results';
+                        return;
+                    }
+
+                    // Create feedback overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = `feedback-overlay ${result.correct ? 'success-bg' : 'error-bg'}`;
+                    
+                    // Add clue image background
+                    const clueBg = document.createElement('div');
+                    clueBg.className = 'clue-background';
+                    clueBg.style.backgroundImage = `url(${result.clue_picture})`;
+                    overlay.appendChild(clueBg);
+
+                    // Create feedback content
+                    const feedbackContent = document.createElement('div');
+                    feedbackContent.className = 'feedback-content';
+                    
+                    if (result.correct) {
+                        feedbackContent.innerHTML = `
+                            <svg class="checkmark" viewBox="0 0 52 52">
+                                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                            </svg>
+                        `;
+                    } else {
+                        feedbackContent.innerHTML = `
+                            <div class="cross">
+                                <div class="cross-line"></div>
+                                <div class="cross-line"></div>
+                            </div>
+                        `;
+                    }
+                    
+                    overlay.appendChild(feedbackContent);
+                    document.querySelector('.image-section').appendChild(overlay);
+
+                    // Remove overlay after animation
+                    setTimeout(() => {
+                        overlay.remove();
+                        nameSearch.value = '';
+                        loadQuestion();
+                    }, 2000);
+                }
+            } catch (error) {
+                showMessage('Submission failed', 'error');
+            } finally {
+                isLoading = false;
+                document.querySelector('button').textContent = 'Submit Answer';
             }
         }
 
-        // Start the game when page loads
+        function showMessage(text, type) {
+            const msg = document.createElement('div');
+            msg.className = `status-message ${type}`;
+            msg.textContent = text;
+            document.body.appendChild(msg);
+            
+            setTimeout(() => {
+                msg.remove();
+            }, 3000);
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                nameList.style.display = 'none';
+            }
+        });
+
+        // Initial load
         loadQuestion();
     </script>
 </body>
