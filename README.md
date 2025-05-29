@@ -48,8 +48,8 @@ The application features a user-friendly interface, dynamic question generation,
 ### Steps to Run the Application
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-repo/image-quiz-game.git
-   cd image-quiz-game
+   git clone https://github.com/b31556/RecognitionGame
+   cd RecognitionGame
    ```
 
 2. **Set Up the Environment**
