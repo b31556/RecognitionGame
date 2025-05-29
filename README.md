@@ -64,14 +64,14 @@ The application features a user-friendly interface, dynamic question generation,
      ```
 
 3. **Prepare the Image Folder**
-   - Place your images in the `pic` folder. Ensure the filenames are descriptive, as they will serve as the correct answers.
+   - Place your images in the `pic` folder. Ensure the filenames are matching with the names in the names.txt, as they will serve as the correct answers.
 
 4. **Prepare Player Lists**
    - Create `Players.txt` and `names.txt` files in the root directory. Each file should contain one entry per line.
 
 5. **Run the Application**
    ```bash
-   python app.py
+   python main.py
    ```
    The application will be available at `http://0.0.0.0:5000`.
 
